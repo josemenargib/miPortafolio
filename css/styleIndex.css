@@ -1,0 +1,181 @@
+body {
+    min-height: 100vh;
+    background: #8308e7;
+    display: grid;
+    place-items: center;
+  }
+  @property --w{
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 32%;
+  }
+  @property --p1 {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 70%;
+  }
+  @property --p2 {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 32%;
+  }
+  @property --p3 {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 32%;
+  }
+  @property --p4 {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 70%;
+  }
+  .parent {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0px 0px 0px 20px #222,
+    0px 0px 20px 40px rgba(255, 255, 255,.2);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  img {
+    --p1: 70%;
+    --p2: 32%;
+    --p3: 32%;
+    --p4: 70%;
+    --w: 25%;
+    width: 400px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    mask: radial-gradient(300px at var(--p1) var(--p2), 
+      black var(--w), 
+      transparent var(--w) 100%),
+      radial-gradient(300px at var(--p3) var(--p4), 
+      black var(--w), 
+      transparent var(--w) 100%);
+    -webkit-mask: radial-gradient(300px at var(--p1) var(--p2), 
+      black var(--w), 
+      transparent var(--w) 100%),
+      radial-gradient(300px at var(--p3) var(--p4), 
+      black var(--w), 
+      transparent var(--w) 100%);
+    cursor: pointer;
+    transition: transform .5s ease;
+  }
+  img:not(hover) {
+    animation: out .3s linear both;
+  }
+  img:hover {
+    transform: scale(1.1);
+    animation: move 1.5s ease both, big 1s .9s ease forwards;
+  }
+  @keyframes big {
+    from {
+      --w: 25%;
+    }
+    to {
+      --w: 100%;
+    }
+  }
+  @keyframes out {
+    from {
+      --w: 100%;
+  
+    }
+    to {
+      --w: 25%;
+    }
+  }
+  @keyframes move {
+    0%, 100% {
+      --p1: 70%;
+      --p2: 32%;
+      --p3: 32%;
+      --p4: 70%;
+    }
+    35% {
+      --p1: 32%;
+      --p2: 70%;
+      --p3: 70%;
+      --p4: 32%;
+    }
+    50% {
+      --p1: 70%;
+      --p2: 60%;
+      --p3: 32%;
+      --p4: 30%;
+    }
+    100% {
+      --p1: 50%;
+      --p2: 50%;
+      --p3: 50%;
+      --p4: 50%;
+    }
+  }
+
+
+  /* estilos para las letras */
+  
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    overflow: hidden;
+}
+.container
+{
+    width: 356px;
+    overflow: hidden;
+}
+.container .text
+{
+    position: relative;
+    color: #ec2424;
+    font-size: 40px;
+    font-weight: 600;
+}
+.container .text.first-text
+{
+    color: #FFF;
+}
+.text.sec-text:before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    border-left: 2px solid #36daf0;
+    animation: animate 4s steps(15) infinite;
+}
+@keyframes animate
+{
+    40%, 60%
+    {
+        left: calc(100% + 4px);
+    }
+    100%
+    {
+        left: 0%;
+    }
+}
+
+.img-1{
+    filter: drop-shadow(1px 1px 20px green);
+}
+.img-2{
+    box-shadow: 5px 5px 20px rgb(105, 13, 209);
+}
